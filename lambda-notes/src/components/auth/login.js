@@ -5,7 +5,7 @@ class Login extends React.Component {
     state = {
         email: '',
         password: ''
-    }
+    };
     inputChangeHandler = event => {
 
         event.preventDefault();
@@ -15,8 +15,10 @@ class Login extends React.Component {
     };
 
     submitHandler = event => {
+        event.preventDefault();
+
         axios
-            .post(keys.userLogin, this.state)
+            .post(keys.userLoginLocal, this.state)
             .then(response => {
                 console.log(response.data);
                 localStorage.setItem('lambda-note-token', response.data.token);
@@ -24,8 +26,8 @@ class Login extends React.Component {
                 this.props.history.push('/notes');
             })
             .catch(err => {
-                console.log(`error ${err}`);
-                localStorage.removeItem('lambda-note-token');
+                console.log(`error login ${err}`);
+                // localStorage.removeItem('lambda-note-token');
 
             });
     };

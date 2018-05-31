@@ -11,16 +11,16 @@ class NoteList extends React.Component {
 
     componentDidMount() {
 
-        const token = localStorage.get('lambda-note-token');
+        const token = localStorage.getItem('lambda-note-token');
 
         const requestOptions = {
             headers: {
                 Authorization: token
             },
         };
-
+        // axios.defaults.withCredentials = true;
         axios
-            .get(keys.getNotes, requestOptions)
+            .get(keys.getNotesLocal, requestOptions)
             .then(response => {
                 this.setState({notes: response.data})
             })
