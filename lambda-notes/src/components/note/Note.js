@@ -1,4 +1,7 @@
-import React from 'react'
+import React from 'react';
+import {Card, CardHeader, CardBody} from 'reactstrap';
+
+import './note.css';
 
 class Note extends React.Component {
     constructor(props) {
@@ -8,8 +11,10 @@ class Note extends React.Component {
     render() {
         return (
             <div>
-                <h2>{this.props.title}</h2>
-                <p>{this.props.description}</p>
+                <Card className='NoteCard'>
+                    <CardHeader>{this.props.title}</CardHeader>
+                    <CardBody>{this.props.description}</CardBody>
+                </Card>
             </div>
         );
     }

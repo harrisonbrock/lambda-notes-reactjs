@@ -18,7 +18,7 @@ class Login extends React.Component {
         event.preventDefault();
 
         axios
-            .post(keys.userLoginLocal, this.state)
+            .post(keys.userLogin, this.state)
             .then(response => {
                 console.log(response.data);
                 localStorage.setItem('lambda-note-token', response.data.token);
